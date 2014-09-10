@@ -12,6 +12,8 @@ print(queue)
 ##  b. Update the queue for the arrival of a new patron named Harold.
 queue <- c(queue, "Harold")
 print(queue)
+# alternative method below
+# append(queue, "Harold")
 
 ##  c. Update the queue to reflect the fact that James has finished checking out.
 queue <- queue[2:6]
@@ -32,10 +34,14 @@ queue <- queue[queue!="Alex"]
 print(queue)
 
 ##  g. Identify the position of Patricia in the queue.
-queue=="Patricia"
+which(queue=="Patricia")
+# Patricia is 2nd in line
+# R indexes start at 1 so there's no need to add 1 to the value returned
+# from this function
 
 ##  h. Count the number of people in the queue.
 length(queue)
+# 3 people left in the queue
 
 ## 2. Modify your answer to quiz exercise 21 so that when you implement the quadratic
 ## equation, meaningful output is given whether there are one, two, or no solutions.
@@ -52,7 +58,7 @@ if (discriminant == 0)
     print("There are 2 real roots")
 }else
 {
-    print("There are 0 real roots")
+    print("There are 0 real roots (no real solutions)")
 }
 r1 <- (-b + sqrt(as.complex(b ^ 2 - 4 * a * c))) / (2 * a)
 r2 <- (-b - sqrt(as.complex(b ^ 2 - 4 * a * c))) / (2 * a)
@@ -65,6 +71,7 @@ r2
 nums <- c(1:1000)
 specified.nums <- nums[(nums %% 3 != 0) & (nums %% 7 != 0) & (nums %% 11 != 0)]
 length(specified.nums)
+# there are 520 numbers that satisfy this specification
 
 ## 4. Write R code that takes three input constants f, g, and h and determines whether
 ## they form a Pythagorean Triple (such that the square of the largest input is equal
@@ -73,4 +80,5 @@ f <- 3
 g <- 4
 h <- 5
 fgh <- sort(c(f, g, h))
-ifelse(fgh[3] == sqrt(fgh[1] ^ 2 + fgh[2] ^ 2), "This set is a Pythagorean Triple", "This set IS NOT a Pythagorian Triple")
+ifelse(fgh[3] == sqrt(fgh[1] ^ 2 + fgh[2] ^ 2), "This set is a Pythagorean Triple",
+       "This set IS NOT a Pythagorian Triple")
